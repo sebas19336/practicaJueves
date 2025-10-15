@@ -1,17 +1,45 @@
+import java.util.Scanner;
+
 public class prueba {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         ListaCircularDoblementeLigada m = new ListaCircularDoblementeLigada();
-        m.agregar(1);
-        m.agregar(2);
-        m.agregar(3);
-        m.agregar(5);
-        m.agregar(12);
-
-        System.out.println("Eliminado: " + m.eliminar(3));
-        m.adelante();
-        m.atras();
-        m.agregar(0);
-        m.adelante();
+        int opt;
+        boolean band;
+        do {
+        System.out.println("lista circular doblemente ligada ");
+        System.out.println("1.Agregar en cola");
+        System.out.println("2.Eliminar valor especifico");
+        System.out.println("3.Mostrar adelante");
+        System.out.println("4.Mostrar atras");
+        switch (opt=sc.nextInt()) {
+            case 1:
+                System.out.println("Ingrese un valor: ");
+                int p = sc.nextInt();
+                m.agregar(p);
+                break;
+            case 2:
+                System.out.println("Que valor desea eliminar? ");
+                int l =sc.nextInt();
+                m.eliminar(l);
+                break;
+            case 3:
+                m.adelante();
+                break;
+            case 4:
+                m.atras();
+                break;
+            default:
+                break;
+        }
+        System.out.println("desea continuar? 1.si 2.no");
+        int q =sc.nextInt();
+        if (q==1) {
+            band = false;
+        }else{
+            band= true;
+        }
+        } while (!band);
     }
 }
 
@@ -91,8 +119,8 @@ class ListaCircularDoblementeLigada {
             System.out.print(temp.getO() + " ");
             temp = temp.getNext();
         } while (temp != head);
-        System.out.println("tamaño: "+length);
         System.out.println();
+        System.out.println("tamaño: "+length);
     }
 
     public void atras() {
@@ -102,7 +130,7 @@ class ListaCircularDoblementeLigada {
             System.out.print(temp.getO() + " ");
             temp = temp.getPrev();
         } while (temp != tail);
-        System.out.println("tamaño: "+length);
         System.out.println();
-    }
+        System.out.println("tamaño: "+length);
+        }
 }
